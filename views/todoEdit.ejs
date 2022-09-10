@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!-- template is very similar to normal todo list  -->
+<head>
+<title>Todo App</title>
+<link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- title of todo list and option to submit more tasks to add to todoTasks in database -->
+<div class="todo-container">
+<h2>To-Do List</h2>
+<div class="todo">
+<form action="" method="POST" class="todo-header">
+<input type="text" name="content">
+<button type="submit"><span class="fas fa-plus"></span></button>
+</form>
+<ul class="todo-list">
+
+    <!-- when editing a task, go through each todoTask and check if the details is equal to the task id, and then offer options if it's correct -->
+<% todoTasks.forEach(details => { %>
+<% if (details._id == idTask) { %>
+<li class="todo-list-item">
+<form action="/edit/<%= details._id %>" method="POST">
+<input type="text" value="<%= details.content %>" name="content">
+<button type="submit">Confirm</button>
+<a href="/" class="cancel">Cancel</a>
+</form>
+</li>
+<!-- otherwise if it's just a normal todoTask that is not selected, just display the contents -->
+<% } else { %>
+<li class="todo-list-item">
+<div class="todo-list-item-name"><%= details.content %></div>
+<a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
+</a>
+<a href="/remove/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
+</a>
+</li>
+<% } %>
+<% }) %>
+<!-- end of iterating through todoTasks object -->
+
+</ul>
+</div>
+</div>
+</body>
