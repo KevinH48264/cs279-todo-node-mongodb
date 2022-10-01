@@ -28,7 +28,10 @@ app.set("view engine", "ejs");
 
 // when entering the index page, send hello world as a string to the rseult
 app.get('/',(req, res) => {
-    res.render('todo.ejs');
+    // go through all todotasks and render with todo.ejs template!
+    TodoTask.find({}, (err, tasks) => {
+        res.render("todo.ejs", { todoTasks: tasks });
+    });
 });
 
 //POST METHOD
