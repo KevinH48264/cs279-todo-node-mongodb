@@ -3,7 +3,7 @@
 How to run:
 
 0. Clone this repository in VS Code
-1. Add your mongoDB environment variables in a ".env" file in the root directory. Ex: export DB_CONNECT="<insert connection url>"
+1. Add your mongoDB environment variables in a ".env" file in the root directory. Ex: DB_CONNECT="<insert connection url>"
 2. Run "source .env" in console
 3. Run "npm install"
 4. Run "npm start"
